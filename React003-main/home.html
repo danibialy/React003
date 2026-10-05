@@ -22,18 +22,24 @@
 ------------------------------------------------------------------------------------------------------------------
 */
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { movies: movieData };
+    this.saveChanges = this.saveChanges.bind(this);
+  }
+
+  saveChanges(index, movie) {
+  }
 
     render() {
-        // grab one sample movie
-        const sample = movieData[0];
                 
         return (
             <main className="container">
                 <section className="columns has-background-light">
-                <MovieList movies={ movieData }/>
+                  <MovieList movies={ this.state.movies }/>
                 <div className="column is-half">
 
-                        <MovieForm movie={sample}    />
+                  <MovieForm movie={ this.state.movies[0] } />
                 </div>
                 </section>
             </main>                
