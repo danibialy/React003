@@ -98,7 +98,7 @@ render() {
     return (
         <div className="column is-half">
             <ul className="columns is-multiline">
-                <SingleMovie  /> 
+              { this.props.movies.map( m => <SingleMovie movie={m} key={m.id} /> ) }
             </ul>   
         </div>   
     );
