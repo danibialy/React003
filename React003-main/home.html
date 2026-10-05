@@ -55,44 +55,54 @@ class App extends React.Component {
 */
 class MovieForm extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-    render() {
-        return (
+  handleChange(e) {
+    const updatedMovie = Object.assign({}, this.props.movie);
+    updatedMovie[e.target.name] = e.target.value;
+    this.props.saveChanges(this.props.index, updatedMovie);
+  }
+
+  render() {
+    return (
             <form className="panel has-background-grey-lighter"  >
 
-                <div className="field is-horizontal">
-                    <div className="field-label is-normal">
-                        <label className="label">Title</label>
-                    </div>
-                    <div className="field-body">
-                        <input className="input" type="text" name="title"
-                            value="sample title" />   
-                    </div>
-                </div>   
+              <div className="field is-horizontal">
+                <div className="field-label is-normal">
+                  <label className="label">Title</label>
+                </div>
+                <div className="field-body">
+                  <input className="input" type="text" name="title"
+                         value={this.props.movie.title} onChange={this.handleChange} />
+                </div>
+              </div>
 
-                <div className="field is-horizontal">
-                    <div className="field-label is-normal">
-                        <label className="label">Tagline</label>
-                    </div>
-                    <div className="field-body">
+              <div className="field is-horizontal">
+                <div className="field-label is-normal">
+                  <label className="label">Tagline</label>
+                </div>
+                <div className="field-body">
                         <textarea className="textarea" rows="2"  name="tagline"
-                            value="sample tagline"></textarea>
-                    </div>
-                </div>                  
+                                  value={this.props.movie.tagline} onChange={this.handleChange}></textarea>
+                </div>
+              </div>
 
-                <div className="field is-horizontal">
-                    <div className="field-label is-normal">
-                        <label className="label">Runtime</label>
-                    </div>
-                    <div className="field-body">
-                        <input className="input" type="text" name="runtime"
-                            value="sample runtime"/>   
-                    </div>
-                </div>    
-                                                  
+              <div className="field is-horizontal">
+                <div className="field-label is-normal">
+                  <label className="label">Runtime</label>
+                </div>
+                <div className="field-body">
+                  <input className="input" type="text" name="runtime"
+                         value={this.props.movie.runtime} onChange={this.handleChange} />
+                </div>
+              </div>
+
             </form>
-        );
-    }
+    );
+  }
 }
 
 /* 
