@@ -39,7 +39,8 @@ class App extends React.Component {
                   <MovieList movies={ this.state.movies }/>
                 <div className="column is-half">
 
-                  <MovieForm movie={ this.state.movies[0] } />
+                  { this.state.movies.map( (m, ind) =>
+                          <MovieForm movie={m} index={ind} key={ind} saveChanges={this.saveChanges} /> ) }
                 </div>
                 </section>
             </main>                
