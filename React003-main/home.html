@@ -29,6 +29,9 @@ class App extends React.Component {
   }
 
   saveChanges(index, movie) {
+    const copyMovies = this.state.movies.slice();
+    copyMovies[index] = movie;
+    this.setState({ movies: copyMovies });
   }
 
     render() {
