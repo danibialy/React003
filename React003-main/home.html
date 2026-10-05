@@ -111,28 +111,27 @@ render() {
 */
 class SingleMovie extends React.Component {
 
-
-render() {
+  render() {
+    const m = this.props.movie;
     return (
-        <li className="column is-one-third-desktop is-half-tablet"  >
-            <div className="card">
+            <li className="column is-one-third-desktop is-half-tablet"  >
+              <div className="card">
                 <div className="card-image">
-                <figure className="image is-2by3">
-                    <img src="https://image.tmdb.org/t/p/w185/sm8iVzA7kRp0d4BSIsgXjsSBMKV.jpg"  alt="Sample Title" />
-                </figure>
+                  <figure className="image is-2by3">
+                    <img src={"https://image.tmdb.org/t/p/w185" + m.poster} alt={m.title} />
+                  </figure>
                 </div>
                 <div className="card-content has-text-centered content-rectangle">
-                    <h2 className="title is-6">Sample Title (000 min)</h2>
-                    <p className="is-size-7">Sample tagline</p>
-                </div>    
+                  <h2 className="title is-6">{m.title} ({m.runtime} min)</h2>
+                  <p className="is-size-7">{m.tagline}</p>
+                </div>
                 <footer className="card-footer">
-                    <MovieLink id="sm8iVzA7kRp0d4BSIsgXjsSBMKV" />
-                </footer>                                      
-            </div>                
-        </li>
+                  <MovieLink id="sm8iVzA7kRp0d4BSIsgXjsSBMKV" />
+                </footer>
+              </div>
+            </li>
     )
-
-}
+  }
 
 }
 
